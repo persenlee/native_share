@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
         floatingActionButton: FloatingActionButton(
           onPressed: 
           (){
-            NativeShare.share({'title':'Plugin example app','url':'https://github.com/flutter'});
+            NativeShare.share({'title':'Plugin example app','url':'https://github.com/persenlee/native_share','image':null});
           },
         ),
       ),

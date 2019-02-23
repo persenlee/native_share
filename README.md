@@ -23,7 +23,7 @@ import 'package:native_share/native_share.dart';
 Then invoke the static `share` method anywhere in your Dart code
 
 ```dart
-NativeShare.share({'title':'Plugin example app','url':'https://github.com/persenlee/native_share','image':''});
+NativeShare.share({'title':'Plugin example app','url':'https://github.com/persenlee/native_share','image':null});
 ```
 
 ## Others
