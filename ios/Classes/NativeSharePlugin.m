@@ -1,4 +1,5 @@
 #import "NativeSharePlugin.h"
+#import "PLSaveImageActivity.h"
 
 @implementation NativeSharePlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
@@ -67,9 +68,11 @@
         [activityItems addObject:image];
     }
     
+    PLSaveImageActivity *saveImageActivity = [PLSaveImageActivity new];
     UIActivityViewController *activityViewController =
     [[UIActivityViewController alloc] initWithActivityItems:activityItems
-                                      applicationActivities:nil];
+                                      applicationActivities:@[saveImageActivity]];
+    activityViewController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll];
     UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
     activityViewController.popoverPresentationController.sourceView = controller.view;
     [controller presentViewController:activityViewController animated:YES completion:nil];
