@@ -41,7 +41,8 @@
         NSURL *imageUrl = [NSURL URLWithString:imagePath];
         if (TARGET_IPHONE_SIMULATOR) {
             if (imageUrl.scheme) {
-                NSData *data = [NSData dataWithContentsOfURL:imageUrl];
+                NSError *error;
+                NSData *data = [NSData dataWithContentsOfURL:imageUrl options:NSDataReadingMappedIfSafe error:&error];
                 if (data) {
                     image = [UIImage imageWithData:data];
                 }
@@ -53,7 +54,8 @@
             if ([imageUrl.scheme isEqualToString:@"file"]) {
                 image = [UIImage imageWithContentsOfFile:imagePath];
             } else {
-                NSData *data = [NSData dataWithContentsOfURL:imageUrl];
+                NSError *error;
+                NSData *data = [NSData dataWithContentsOfURL:imageUrl options:NSDataReadingMappedIfSafe error:&error];
                 if (data) {
                     image = [UIImage imageWithData:data];
                 }

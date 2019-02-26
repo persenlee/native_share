@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
           onPressed: 
           (){
             NativeShare.share({'title':'Plugin example app','url':'https://github.com/persenlee/native_share',
-            'image' : 'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png'});
+            'image' : 'http://imgsrc.baidu.com/imgad/pic/item/908fa0ec08fa513de63a3ec7376d55fbb2fbd913.jpg'});
           },
         ),
       ),
