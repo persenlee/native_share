@@ -8,7 +8,7 @@ class NativeShare {
       const MethodChannel('plugin.persenlee.com/native_share');
 
   static Future<int> share(Map<String,dynamic> params) async{
-     final int result = await _channel.invokeMethod('share',params);
+      var result = await _channel.invokeMethod('share',params);
       return result;
   }
 }
