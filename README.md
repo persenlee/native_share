@@ -6,7 +6,7 @@ Wraps the ACTION_SEND Intent on Android and UIActivityViewController on iOS.
 
 iOS support  Title,Url,Image(local & remote)
 
-Android support Title,Image(local)
+Android support Title,Url,Image(local & remote)
 
 ## Usage
 
