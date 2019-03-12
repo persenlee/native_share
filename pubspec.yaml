@@ -1,6 +1,6 @@
 name: native_share
 description: A Flutter plugin to share content from your Flutter app via the platform's share dialog.
-version: 1.0.0
+version: 0.1.0
 author: persenlee<persenlee90@gmail.com>
 homepage: https://github.com/persenlee/native_share
 
