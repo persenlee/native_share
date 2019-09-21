@@ -34,7 +34,6 @@
         if (url) {
             [activityItems addObject:url];
         }
-        [activityItems addObject:url];
     }
     UIImage *image = nil;
     if (imagePath) {
@@ -62,9 +61,6 @@
             }
         }
         
-    }
-    if (!image) {
-        image = [UIImage imageNamed:@"AppIcon"];
     }
     if (image) {
         [activityItems addObject:image];
