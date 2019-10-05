@@ -15,6 +15,14 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
+  void handlePress() async {
+    print('Starting share');
+    int res = await NativeShare.share({'title':'Plugin example app','url':'https://github.com/persenlee/native_share',
+      'image' : 'http://imgsrc.baidu.com/imgad/pic/item/908fa0ec08fa513de63a3ec7376d55fbb2fbd913.jpg'});
+
+    print('Sharing finished with code $res');
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,10 +34,8 @@ class _MyAppState extends State<MyApp> {
           child: Text(''),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: 
-          (){
-            NativeShare.share({'title':'Plugin example app','url':'https://github.com/persenlee/native_share',
-            'image' : 'http://imgsrc.baidu.com/imgad/pic/item/908fa0ec08fa513de63a3ec7376d55fbb2fbd913.jpg'});
+          onPressed: () {
+            handlePress();
           },
         ),
       ),

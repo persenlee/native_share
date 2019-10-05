@@ -12,13 +12,13 @@
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
   if([@"share" isEqualToString:call.method]) {
-      [self share:call.arguments];
+      [self share:call.arguments result: result];
   } else {
     result(FlutterMethodNotImplemented);
   }
 }
 
-- (void)share:(NSDictionary *)params {
+- (void)share:(NSDictionary *)params result:(FlutterResult) result {
     if(params == nil) {
       return;
     }
@@ -34,7 +34,6 @@
         if (url) {
             [activityItems addObject:url];
         }
-        [activityItems addObject:url];
     }
     UIImage *image = nil;
     if (imagePath) {
@@ -63,9 +62,6 @@
         }
         
     }
-    if (!image) {
-        image = [UIImage imageNamed:@"AppIcon"];
-    }
     if (image) {
         [activityItems addObject:image];
     }
@@ -77,6 +73,25 @@
     activityViewController.excludedActivityTypes = @[UIActivityTypeSaveToCameraRoll];
     UIViewController *controller = [UIApplication sharedApplication].keyWindow.rootViewController;
     activityViewController.popoverPresentationController.sourceView = controller.view;
+
+    activityViewController.completionWithItemsHandler = ^(NSString *activityType,
+                                                          BOOL completed,
+                                                          NSArray *returnedItems,
+                                                          NSError *error) {
+        
+        if (error) {
+            result([FlutterError errorWithCode:[NSString stringWithFormat:@"Error %ld", error.code]
+            message:error.domain
+            details:error.localizedDescription]);
+        } else if (completed) {
+            // user shared an item
+            result(@0);
+        } else {
+            // user cancelled
+            result(@-1);
+        }
+    };
+
     [controller presentViewController:activityViewController animated:YES completion:nil];
 }
 
